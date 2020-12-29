@@ -1,0 +1,36 @@
+/*
+백준 9251 LCS
+공통부분 문자열 중 최대의 길이를 출력하는 문제.
+DP를 사용하여 해결.
+문자열 A의 i번 째와 문자열 B의 j번 째를 비교 후 DP[i][j]에 입력.
+DP[i][j] -> 같은 문자 판별 시 DP[i-1][j-1] + 1, 
+			다른 문자 판별 시 DP[i-1][j] or DP[i][j-1] 중 큰 값 저장
+*/
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+	string s1 = "", s2 = "";
+	getline(cin, s1);
+	getline(cin, s2);
+	int len1 = s1.length();
+	int len2 = s2.length();
+	int** DP;
+	DP = new int*[len1 + 1];
+	for (int i = 0; i < len1 + 1; i++) {
+		DP[i] = new int[len2 + 1];
+		DP[i][0] = 0;
+	}
+	for (int i = 0; i < len2 + 1; i++) {
+		DP[0][i] = 0;
+	}
+	for (int i = 1; i < len1 + 1; i++) {
+		for (int j = 1; j < len2 + 1; j++) {
+			if (s1[i - 1] == s2[j - 1]) DP[i][j] = DP[i - 1][j - 1] + 1;
+			else DP[i][j] = (DP[i - 1][j] > DP[i][j - 1] ? DP[i - 1][j] : DP[i][j - 1]);
+		}
+	}
+	cout << DP[len1][len2] << "\n";
+	return 0;
+}
