@@ -1,0 +1,21 @@
+body{
+    background-color: lightblue;
+}
+
+h1{
+    color: white;
+}
+
+.clicked{
+    color:black;
+}
+
+.showing {
+    display: block;
+}
+
+.form,
+.grettings {
+    display: none;
+}
+
