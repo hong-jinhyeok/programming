@@ -10,11 +10,12 @@ h1{
     color:black;
 }
 
+.showing {
+    display: block;
+}
+
 .form,
 .grettings {
     display: none;
 }
 
-.showing {
-    display: block;
-}
