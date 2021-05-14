@@ -1,7 +1,7 @@
 /*
-hook useState사용.
-App->hook사용
-AppUgly->hook사용X
+hook useInput 함수를 만들어사용.
+특적 값과 조건 함수를 반환.
+내부 로직에서 조건에 따라 값을 update.
 */
 
 import React, { useState } from "react";
