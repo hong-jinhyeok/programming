@@ -22,11 +22,23 @@ app.get('/', (req, res) =>{
     res.send('helloJS')
 })
 
+app.post("/data", (req, res) => {
+    connection.query("SELECT * FROM test", function (err, rows, fields) {
+        if (err) {
+        console.log("데이터 가져오기 실패");
+        } else {
+        console.log(rows[0]);
+        res.send(rows[0]);
+        }
+    });
+  });
+
 app.post("/idplz", (req,res)=>{
     const test = req.body.test;
     const wtest = req.body.wtest;
-     console.log(req.body);
-    connection.query("INSERT INTO test (test_body,test_writer) values (?,?)",[test,wtest],
+    console.log(req.body);
+    const sqlQiery="INSERT INTO test (test_body,test_writer) values (?,?)";
+    connection.query(sqlQiery,[test,wtest],
     function(err,rows,fields){
         if(err){
             console.log("실패");
@@ -36,8 +48,6 @@ app.post("/idplz", (req,res)=>{
             // console.log(rows);
         };
     });
-
-    
 });
 
 app.listen(port, ()=>{
