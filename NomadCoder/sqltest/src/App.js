@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
+import { HashRouter, Route } from "react-router-dom";
 import './App.css';
+import Write from "./routes/Write";
 export default class App extends Component {
   state = {
     testid : '',
@@ -61,18 +63,19 @@ getId = () => {
 
   render() {
     return (
-      <div>
-        <input onChange={this.handleChange} name ="testbody"/>
-        <input onChange={this.handleChange} name ="testwriter"/>
-        <button onClick = {this.submitId}>Submit</button>
-        <h1>{this.state.testbody}</h1>
-        <br></br>
-        <h1>데이터 가져오기</h1>
-        <h3>{this.state.testid}</h3>
-        <h3>{this.state.testwriter}</h3>
-        <h3>{this.state.testbody}</h3>
-        <button onClick={this.getId}>가져오기</button>
-      </div>
+      // <div>
+      //   <input onChange={this.handleChange} name ="testbody"/>
+      //   <input onChange={this.handleChange} name ="testwriter"/>
+      //   <button onClick = {this.submitId}>Submit</button>
+      //   <h1>{this.state.testbody}</h1>
+      //   <br></br>
+      //   <h1>데이터 가져오기</h1>
+      //   <h3>{this.state.testid}</h3>
+      //   <h3>{this.state.testwriter}</h3>
+      //   <h3>{this.state.testbody}</h3>
+      //   <button onClick={this.getId}>가져오기</button>
+      // </div>
+      <Route path="/write" component={Write}/>
     )
   }
 }
