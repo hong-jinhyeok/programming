@@ -10,16 +10,21 @@ function solution(people, limit) {
     people.sort(function(a,b){
         return a-b;
     });
+    console.log(people);
     var sum=0;
-    for(var i=0; i<people.length;){
-        if(sum+people[i]<=limit){
-            sum+=people[i];
-            i++;
+    let start=0;
+    let end=people.length-1;
+    
+    while(start<=end){
+        if(people[start]+people[end]<=limit){
+            answer++;
+            start++;
+            end--;
         }else{
             answer++;
-            sum=0;
+            end--;
         }
     }
-    if(sum!=0) answer++;
+    
     return answer;
 }
